@@ -1,0 +1,14 @@
+
+<div class="navigation">
+    <ul>
+        <ng-container *ngFor="let nav of navs">
+            <li class="list" [class.active] ="selectedNav === nav.label">
+                <a href="#">
+                    <span class="icon ion-android-home" [ngClass]="nav.icon"></span>
+                    <span class="text">{{nav.label}}</span>
+                </a>
+            </li>
+        </ng-container>
+        <div class="indicator"></div>
+    </ul>
+</div>

@@ -1,0 +1,8 @@
+<app-header [title]="'NGAI e.'"></app-header>
+<div class="row space-rows">
+    <!-- <div  class="col" *ngFor="let task of taskList"> -->
+        <app-card-task *ngFor="let task of taskList; let i = index"  [task]="task" [pos]="i + 1"></app-card-task>
+    <!-- </div> -->
+
+</div>
+<app-footer></app-footer>
