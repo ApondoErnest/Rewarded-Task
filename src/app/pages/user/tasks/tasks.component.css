@@ -71,7 +71,7 @@
     color: #d24d57;
   }
   .row app-card-task {
-    width: 30% !important;
-    max-width: 30% !important;
+    width: 100%;
+    flex: 1 0 33.3%;
 }
   
