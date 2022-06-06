@@ -13,6 +13,7 @@
 .navigation ul {
   display: flex;
   width: 413px;
+  padding-left: 2rem
 }
 
 .navigation ul li {
