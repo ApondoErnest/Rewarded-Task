@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './user/tasks/tasks.component';
 import { ComponentsModuleModule } from '../component/components-module.module';
 import { SupportComponent } from './user/support/support.component';
+import { MainComponent } from './user/main/main.component';
 
 
 
@@ -19,7 +20,8 @@ import { SupportComponent } from './user/support/support.component';
     RegisterComponent,
     LoginComponent,
     TasksComponent,
-    SupportComponent
+    SupportComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
