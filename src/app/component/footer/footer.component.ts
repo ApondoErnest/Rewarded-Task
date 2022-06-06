@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BottomNavs } from 'src/app/common/interfaces/navs';
 import { BOTTOM_NAVS } from 'src/app/common/mock/bottom-navs';
 
@@ -10,7 +11,7 @@ import { BOTTOM_NAVS } from 'src/app/common/mock/bottom-navs';
 export class FooterComponent implements OnInit {
   navs: BottomNavs[];
   selectedNav: string = 'Task';
-  constructor() { 
+  constructor(private router: Router) { 
     this.navs =BOTTOM_NAVS;
     console.log('came to constructor');
   }
@@ -19,4 +20,9 @@ export class FooterComponent implements OnInit {
     console.log('came to init')
   }
 
+  changeBottomNav(nav: BottomNavs){
+    this.selectedNav = nav.label;
+
+    this.router.navigate([nav.path]);
+  }
 }
