@@ -10,7 +10,7 @@ import { BOTTOM_NAVS } from 'src/app/common/mock/bottom-navs';
 })
 export class FooterComponent implements OnInit {
   navs: BottomNavs[];
-  selectedNav: string = 'Task';
+  selectedNav: string = 'Dashboard';
   constructor(private router: Router) { 
     this.navs =BOTTOM_NAVS;
     console.log('came to constructor');
