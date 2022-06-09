@@ -10,6 +10,7 @@ import { TasksComponent } from './user/tasks/tasks.component';
 import { ComponentsModuleModule } from '../component/components-module.module';
 import { SupportComponent } from './user/support/support.component';
 import { MainComponent } from './user/main/main.component';
+import { CampaignsComponent } from './user/campaigns/campaigns.component';
 
 
 
@@ -21,7 +22,8 @@ import { MainComponent } from './user/main/main.component';
     LoginComponent,
     TasksComponent,
     SupportComponent,
-    MainComponent
+    MainComponent,
+    CampaignsComponent
   ],
   imports: [
     CommonModule,

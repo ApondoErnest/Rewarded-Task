@@ -124,6 +124,9 @@ div.navigation {
   position: fixed;
   bottom: 0;
   width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1116px;
 }
 
 .ion-android-hand:before {

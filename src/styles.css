@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+#content {
+         padding-right: var(--bs-gutter-x,.75rem); 
+        padding-left: var(--bs-gutter-x,.75rem);
+}
