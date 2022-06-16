@@ -1,1 +1,78 @@
-<p>register works!</p>
+<section class="register-photo">
+    <div class="form-group mb-3 text-danger" *ngIf="f.submitted && errorMessage !== ''">{{errorMessage}}</div>
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form method="post" name="form" (ngSubmit)="register(f)" #f="ngForm" novalidate>
+            <h2 class="text-center"><strong>Create</strong> an account.</h2>
+            <div class="form-group mb-3">
+                <input 
+                class="form-control" 
+                ngModel
+                required
+                type="text" 
+                name="name" 
+                placeholder="Enter your name">
+            </div>
+            <div class="form-group mb-3">
+                <input 
+                ngModel
+                required
+                minlength="3"
+                maxlength="20"
+                class="form-control" 
+                name="username"
+                type="text" 
+                placeholder="username">
+            </div>
+            <div class="form-group mb-3">
+                <input 
+                class="form-control" 
+                ngModel
+                required 
+                type="tel"
+                name="tel" 
+                placeholder="Enter phone Number">
+            </div>
+            <div class="form-group mb-3">
+                <input 
+                class="form-control" 
+                type="password" 
+                ngModel
+                required
+                minlength="6" 
+                #pwd="ngModel"
+                name="pwd" 
+                placeholder="pwd" 
+                required="">
+            </div>
+            <div class="form-group mb-3">
+                <input 
+                class="form-control" 
+                type="password" 
+                ngModel
+                #cpwd="ngModel" 
+                name="cpwd" 
+                placeholder="Confirm" 
+                required>
+            </div>
+            <div class="form-group mb-3 text-danger" *ngIf="f.submitted && cpwd.value !== pwd.value">passwords do not match</div>
+            <input 
+            class="form-control" 
+            type="text"
+            name="referral"
+            [ngModel]="referral"
+            placeholder="Referral Code">
+            <div class="form-group mb-3">
+                <div class="form-check">
+                    <input 
+                    class="form-check-input" 
+                    ngModel
+                    type="checkbox" 
+                    #agree="ngModel"
+                    name="aggree"
+                    id="formCheck-1"><label class="form-check-label" for="formCheck-1">I agree to the license terms.</label></div>
+            </div>
+            <div class="form-group mb-3"><button class="btn btn-primary d-block w-100" type="submit" [disabled]="!agree.value || !f.valid">Sign Up</button></div><a class="already" [routerLink]="['/login']">You already have an account? Login here.</a>
+        </form>
+    </div>
+</section> 

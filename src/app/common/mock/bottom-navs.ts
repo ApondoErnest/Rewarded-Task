@@ -12,13 +12,13 @@ export const BOTTOM_NAVS: BottomNavs[] = [
         label: 'Task'
     },
     {
+        path: '/user/campaign',
+        icon: 'ion-grid',
+        label: 'Campaign'
+    },
+    {
         path: '/user/account',
         icon: 'ion-android-person',
         label: 'Account'
-    },
-    {
-        path: 'user/support',
-        icon: 'ion-android-call',
-        label: 'Support'
     }
 ]

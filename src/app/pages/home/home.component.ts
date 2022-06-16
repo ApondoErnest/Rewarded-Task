@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   signin() {
-    this.router.navigate(['/user/dashboard']); //todo change to move to sign in view
+    this.router.navigate(['/register']); //todo change to move to sign in view
   }
 }
