@@ -3,7 +3,8 @@
         <h3 class="mb-4">Ongoing Campaigns</h3>
     </div>
     <ul class="list-unstyled">
-        <li class="media mb-4" *ngFor="let campaign of campaignList"><a class="d-flex" href="#">
+        <li class="media mb-4" *ngFor="let campaign of campaignList">
+            <a class="d-flex" [routerLink]="['/user/bet']" [queryParams]="{id: campaign.campaignId}">
                 <div class="media-thumb mr-3" [style.background-image]="'url(/assets/img/' + campaign.img + ')'" ></div>
                 <div class="media-body align-self-center">
                     <h6>{{campaign.name}}</h6>

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let option of optionsList">
+        <div class="card">
+            <div class="card-main" [style.background]="'url(' + imgBase + option.img + ') center / cover'">
+                <div class="d-flex flex-row justify-content-center align-items-center bg-con" >
+                    <button 
+                        class="btn btn-primary" 
+                        type="button" 
+                        style="border-style: none;background: #b86868;width: 60px;height: 60px;border-radius: 39px;box-shadow: 2px 2px 20px -1px #757575;" >
+                        <i class="fas fa-plus" style="color: rgb(255,255,255);font-size: 20px;"></i>
+                    </button>
+                    <div class="modal fade" id="modal_image"  style="margin-top: 16vh;">
+                        <div class="modal-footer">
+                            <button 
+                                class="btn btn-light" type="button"
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between" style="padding-bottom: 20px;height: 290px;">
+                <div class="name">
+                    <h6 class="text-muted d-inline mb-2">{{option.odd}}</h6>
+                    <h4>{{option.name}}</h4>
+                    <p>{{option.desc}}<br></p>
+                </div>
+                <a 
+                    class="btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center more-info"
+                    role="button" data-bss-hover-animate="pulse">
+                    more info
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

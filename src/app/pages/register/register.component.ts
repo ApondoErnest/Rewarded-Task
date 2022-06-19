@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit {
       this.errorMessage = data.message ? data.message : "Server error";  
     }, err => {
       this.errorMessage = err?.error?.message;
+      this.router.navigate(['/login']); //todo remove this
     });
   }
 

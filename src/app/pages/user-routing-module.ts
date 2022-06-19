@@ -5,7 +5,7 @@ import { DashboardComponent } from "./user/dashboard/dashboard.component";
 import { MainComponent } from "./user/main/main.component";
 import { SupportComponent } from "./user/support/support.component";
 import { TasksComponent } from "./user/tasks/tasks.component";
-import { CampaignsComponent } from "./user/campaigns/campaigns.component";
+import { GameComponent } from "./user/games/game.component";
 
 const routes: Routes = [
     {
@@ -29,9 +29,13 @@ const routes: Routes = [
                 component: SupportComponent
             },
             {
-                path: 'campaign',
-                component: CampaignsComponent
+                path: 'games',
+                component: GameComponent
             },
+            {
+                path: 'bet',
+                loadChildren: () => import('./user/bet/bet.module').then(m => m.BetModule)
+              },
             {
                 path: '',
                 component: DashboardComponent

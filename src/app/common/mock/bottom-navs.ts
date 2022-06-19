@@ -12,9 +12,9 @@ export const BOTTOM_NAVS: BottomNavs[] = [
         label: 'Task'
     },
     {
-        path: '/user/campaign',
+        path: '/user/games',
         icon: 'ion-grid',
-        label: 'Campaign'
+        label: 'Games'
     },
     {
         path: '/user/account',

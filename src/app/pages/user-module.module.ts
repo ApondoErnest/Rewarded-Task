@@ -8,7 +8,8 @@ import { TasksComponent } from './user/tasks/tasks.component';
 import { ComponentsModuleModule } from '../component/components-module.module';
 import { SupportComponent } from './user/support/support.component';
 import { MainComponent } from './user/main/main.component';
-import { CampaignsComponent } from './user/campaigns/campaigns.component';
+import { GameComponent } from "./user/games/game.component";
+import { BetModule } from './user/bet/bet.module';
 
 
 
@@ -19,12 +20,13 @@ import { CampaignsComponent } from './user/campaigns/campaigns.component';
     TasksComponent,
     SupportComponent,
     MainComponent,
-    CampaignsComponent
+    GameComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    ComponentsModuleModule
+    ComponentsModuleModule,
+    BetModule
   ]
 })
 export class UserModuleModule { }

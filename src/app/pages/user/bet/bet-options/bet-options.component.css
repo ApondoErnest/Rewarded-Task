@@ -1,0 +1,86 @@
+.card-main {
+    width: 100%;
+    height: 380px;
+    /* background: url(&quot;https://github.com/Ngai-E/resources/blob/main/bbn/jmk.jpg?raw=true&quot;) center / cover; */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+}
+
+.card {
+    width: 21rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 2px 2px 16px 8px rgba(0,0,0,0.1);
+    min-width: 220px;
+    border-style: none;
+    max-width: 100%;
+    margin: 16px;
+}
+
+.more-info{
+    margin-top: 20px;
+    background: #128C7E;
+    border-style: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-shadow: 2px 2px 8px rgba(117,117,117,0.71);
+}
+
+.name h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    color: rgb(255,160,0);
+    margin-bottom: 8px;
+    margin-top: 22px;
+}
+.name h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    color: rgb(255,160,0);
+    margin-bottom: 8px;
+    margin-top: 22px;
+}
+.name h6 {
+    color: #757575;
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-right: 8px;
+    padding-bottom: 2px;
+    background: #cdcf66;
+    padding-top: 2px;
+}
+
+.name p {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #212121;
+}
+
+.modal-footer button {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #b86868;
+    color: rgb(255,255,255);
+    border-radius: 25px;
+    margin-bottom: 4px;
+    padding-right: 16px;
+    padding-left: 16px;
+    box-shadow: 2px 2px 12px rgba(117,117,117,0.77);
+    border-style: none;
+}
+
+.bg-con {
+    border-radius: 39px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: -31px;
+    right: 20px;
+    
+}
