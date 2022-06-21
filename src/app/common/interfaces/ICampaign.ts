@@ -11,6 +11,8 @@ export interface IBetCategories {
     img: string,
     bgColor: string,
     name: string,
+    minStake: number,
+    maxStake: number,
     desc: string,
     campaignId: number,
     minSelection: number,

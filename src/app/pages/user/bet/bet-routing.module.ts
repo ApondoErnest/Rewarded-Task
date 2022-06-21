@@ -9,12 +9,12 @@ const routes: Routes = [
     path: '',
     component: BetCategoriesComponent
   },
+  // {
+  //   path: 'bet',
+  //   component: BetCategoriesComponent
+  // },
   {
-    path: 'bet',
-    component: BetCategoriesComponent
-  },
-  {
-    path: 'bet/:id',
+    path: ':id',
     component: BetOptionsComponent
   },
 ];

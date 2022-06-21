@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NavService } from '../../common/services/nav.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 @Input() title: String = "";
 @Input() coins: number = 0;
-  constructor() { }
+  constructor(public navService: NavService) { }
 
   ngOnInit(): void {
+
   }
 
 }

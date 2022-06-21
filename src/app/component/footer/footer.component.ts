@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BottomNavs } from 'src/app/common/interfaces/navs';
 import { BOTTOM_NAVS } from 'src/app/common/mock/bottom-navs';
+import { NavService } from '../../common/services/nav.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,18 +11,20 @@ import { BOTTOM_NAVS } from 'src/app/common/mock/bottom-navs';
 })
 export class FooterComponent implements OnInit {
   navs: BottomNavs[];
-  selectedNav: string = 'Dashboard';
-  constructor(private router: Router) { 
+  selectedNav: string = '';
+  constructor(private router: Router,
+    public navService: NavService) { 
     this.navs =BOTTOM_NAVS;
-    console.log('came to constructor');
   }
 
   ngOnInit(): void {
-    console.log('came to init')
+    this.selectedNav = this.navService.bottomNav;
+    console.log(this.selectedNav)
   }
 
   changeBottomNav(nav: BottomNavs){
     this.selectedNav = nav.label;
+    this.navService.bottomNav = nav.label;
 
     this.router.navigate([nav.path]);
   }

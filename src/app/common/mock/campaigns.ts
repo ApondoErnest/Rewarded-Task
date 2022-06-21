@@ -25,6 +25,8 @@ export const BET_CATEGORIES_LIST: IBetCategories[] = [
         desc: "Select one house made to win the Ultimate price",
         campaignId: 1,
         id: 1,
+        minStake: 200,
+        maxStake: 5000,
         minSelection: 1,
         maxSelection: 1
     },
@@ -34,6 +36,8 @@ export const BET_CATEGORIES_LIST: IBetCategories[] = [
         name: "1st Runner Up",
         campaignId: 1,
         id: 2,
+        minStake: 200,
+        maxStake: 5000,
         desc: "Select one house made to win the Ultimate price",
         minSelection: 1,
         maxSelection: 1
@@ -44,6 +48,8 @@ export const BET_CATEGORIES_LIST: IBetCategories[] = [
         name: "This Week's Nominees",
         campaignId: 1,
         id: 3,
+        minStake: 200,
+        maxStake: 5000,
         desc: "Select between 3 to 5 housemates you think will be up for possible eviction",
         minSelection: 3,
         maxSelection: 5
@@ -54,6 +60,8 @@ export const BET_CATEGORIES_LIST: IBetCategories[] = [
         name: "Head of House",
         campaignId: 1,
         id: 4,
+        minStake: 200,
+        maxStake: 5000,
         desc: "Select The housemate you think will win the head of House this week",
         minSelection: 1,
         maxSelection: 1
@@ -63,6 +71,8 @@ export const BET_CATEGORIES_LIST: IBetCategories[] = [
         bgColor: "#1e5597",
         campaignId: 1,
         id: 5,
+        minStake: 200,
+        maxStake: 5000,
         name: "Deputy Head of House",
         desc: "Select The housemate you think will be selected as deputy Head of house this week",
         minSelection: 1,
@@ -73,6 +83,8 @@ export const BET_CATEGORIES_LIST: IBetCategories[] = [
         bgColor: "#0553b3",
         campaignId: 1,
         id: 6,
+        minStake: 200,
+        maxStake: 5000,
         name: "Head of house pair",
         desc: "Select two housemates you think will rule the house this week",
         minSelection: 2,
