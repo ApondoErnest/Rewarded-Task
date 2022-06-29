@@ -14,6 +14,8 @@ export class BetOptionsComponent implements OnInit {
 
   optionsList: IBetOPtions[] = [];
   imgBase:string;
+  selecetedOptions:  IBetOPtions[] = [];
+  idsSelected: number[] = []
   constructor(private campaignService: CampaignService,
     private navService: NavService,
     private route: ActivatedRoute,
@@ -37,6 +39,26 @@ export class BetOptionsComponent implements OnInit {
         this.navService.showCoins = true;
       }
     })
+  }
+
+  addOrRemoveOption(selectedOption: IBetOPtions) {
+    let isPresentInSelectedOptions =false;
+    for (let index = 0; index < this.selecetedOptions.length; index++) {
+      if (this.selecetedOptions[index].id === selectedOption.id) {
+        isPresentInSelectedOptions = true;
+
+        this.selecetedOptions = this.selecetedOptions.filter(id => this.selecetedOptions[index].id !== selectedOption.id);
+
+        this.idsSelected = this.idsSelected.filter(id => id !== selectedOption.id);
+        break;
+      }
+      
+    }
+
+    if (!isPresentInSelectedOptions){
+       this.selecetedOptions.push(selectedOption);
+       this.idsSelected.push(selectedOption.id)
+    }
   }
 
 }

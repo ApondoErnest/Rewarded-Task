@@ -4,10 +4,11 @@
             <div class="card-main" [style.background]="'url(' + imgBase + option.img + ') center / cover'">
                 <div class="d-flex flex-row justify-content-center align-items-center bg-con" >
                     <button 
+                        (click)="addOrRemoveOption(option)"
                         class="btn btn-primary" 
                         type="button" 
                         style="border-style: none;background: #b86868;width: 60px;height: 60px;border-radius: 39px;box-shadow: 2px 2px 20px -1px #757575;" >
-                        <i class="fas fa-plus" style="color: rgb(255,255,255);font-size: 20px;"></i>
+                        <i class="fas" [ngClass]="idsSelected.includes(option.id) ? 'fa-check' : 'fa-plus'"  style="color: rgb(255,255,255);font-size: 20px;"></i>
                     </button>
                     <div class="modal fade" id="modal_image"  style="margin-top: 16vh;">
                         <div class="modal-footer">
