@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IMG_URL_BASE } from '../../../../common/config/config';
 import { IBetOPtions } from '../../../../common/interfaces/ICampaign';
 import { CampaignService } from '../../../../common/services/campaign.service';
@@ -16,11 +17,15 @@ export class BetOptionsComponent implements OnInit {
   imgBase:string;
   selecetedOptions:  IBetOPtions[] = [];
   idsSelected: number[] = []
+  routerEventsSubscription: Subscription;
+  checkoutEventsSubscription: Subscription;
   constructor(private campaignService: CampaignService,
     private navService: NavService,
     private route: ActivatedRoute,
     private router: Router) {
       this.imgBase = IMG_URL_BASE;
+      this.routerEventsSubscription = new Subscription;
+      this.checkoutEventsSubscription = new Subscription;
      }
 
   ngOnInit(): void {
@@ -33,12 +38,13 @@ export class BetOptionsComponent implements OnInit {
     this.navService.showCart = true;
     this.navService.showCoins = false;
 
-    this.router.events.subscribe( event => {
-      if (event instanceof NavigationEnd) {
-        this.navService.showCart = false;
-        this.navService.showCoins = true;
-      }
-    })
+    this.routerEventsSubscription = this.subscribeToRouterEvents();
+    this.checkoutEventsSubscription = this.subscribeToCheckoutEvents();
+  }
+
+  ngOnDestroy() {
+    this.routerEventsSubscription.unsubscribe();
+    this.checkoutEventsSubscription.unsubscribe();
   }
 
   addOrRemoveOption(selectedOption: IBetOPtions) {
@@ -47,7 +53,7 @@ export class BetOptionsComponent implements OnInit {
       if (this.selecetedOptions[index].id === selectedOption.id) {
         isPresentInSelectedOptions = true;
 
-        this.selecetedOptions = this.selecetedOptions.filter(id => this.selecetedOptions[index].id !== selectedOption.id);
+        this.selecetedOptions = this.selecetedOptions.filter(option => option.id !== selectedOption.id);
 
         this.idsSelected = this.idsSelected.filter(id => id !== selectedOption.id);
         break;
@@ -57,8 +63,27 @@ export class BetOptionsComponent implements OnInit {
 
     if (!isPresentInSelectedOptions){
        this.selecetedOptions.push(selectedOption);
-       this.idsSelected.push(selectedOption.id)
+       this.idsSelected.push(selectedOption.id);
     }
+
+    this.navService.cartNumber = this.selecetedOptions.length;
   }
 
+  private checkoutPage():void {
+    this.router.navigate(['/user/bet/checkout'])
+  }
+
+  private subscribeToRouterEvents() {
+    return this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.navService.showCart = false;
+        this.navService.showCoins = true;
+      }
+    });
+  }
+  private subscribeToCheckoutEvents() {
+    return this.navService.getcheckout().subscribe(num => {
+      this.checkoutPage();
+    });
+  }
 }

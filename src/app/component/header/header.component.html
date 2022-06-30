@@ -6,12 +6,15 @@
             <img src="assets/img/—Pngtree—illustration%20gold%20coin_6667613.png" style="width: 30px;">
         </div>
         <div *ngIf="navService.showCart">
-        <button class="btn btn-primary cart-button" type="button" >
+        <button 
+        class="btn btn-primary cart-button" 
+        (click) ="goToCheckout()"
+        type="button" >
             <i class="fas fa-shopping-cart" style="font-size: 2em;margin-right: .4rem;">
             </i>
             <span class="text-uppercase"></span>
         </button>
-        <span class="counter">22</span>
+        <span class="counter">{{navService.cartNumber}}</span>
         </div>
     </div>
 </header>

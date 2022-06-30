@@ -9,6 +9,9 @@ import { BET_CATEGORIES_LIST, BET_OPTIONS, CAMPAIGN_LIST } from '../mock/campaig
 })
 export class CampaignService {
 
+  private _selectedOptions: IBetOPtions[] = [];
+  private _selectedCategories: IBetCategories[] = [];
+
   constructor() { }
 
   getAvailableCampaigns(): Observable<ICampaign[]> {
@@ -23,4 +26,5 @@ export class CampaignService {
   getBetOptions(categoryId: number):Observable<IBetOPtions[]> {
     return of(BET_OPTIONS);
   }
+
 }

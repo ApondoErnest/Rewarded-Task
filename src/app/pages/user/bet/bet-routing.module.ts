@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BetCategoriesComponent} from './bet-categories/bet-categories.component';
+import { BetCheckoutComponent } from './bet-checkout/bet-checkout.component';
 import {BetOptionsComponent} from './bet-options/bet-options.component'
 
 const routes: Routes = [
@@ -14,9 +15,13 @@ const routes: Routes = [
   //   component: BetCategoriesComponent
   // },
   {
+    path: 'checkout',
+    component: BetCheckoutComponent
+  },
+  {
     path: ':id',
     component: BetOptionsComponent
-  },
+  }
 ];
 
 @NgModule({

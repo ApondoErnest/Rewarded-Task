@@ -15,4 +15,14 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  goToCheckout() {
+    if (this.navService.cartNumber == 0) {
+      //Todo modal service
+      console.log("no items in cart");
+      return;
+    }
+
+    this.navService.performCheckout(0);
+  }
+
 }

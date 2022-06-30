@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,13 @@ export class NavService {
   private _showCart: boolean;
   private _showCoins: boolean;
   private _cartNumber: number;
+  private _checkout = new Subject();
+
   constructor() { 
     this._bottomNav = 'Dashboard';
     this._showCoins = true;
     this._showCart = false;
-    this._cartNumber = 22;
+    this._cartNumber = 0;
   }
 
 
@@ -40,5 +43,12 @@ export class NavService {
   }
   public set cartNumber(value: number) {
     this._cartNumber = value;
+  }
+
+  public getcheckout() {
+    return this._checkout;
+  }
+  public performCheckout(value:number) {
+    this._checkout.next(value);
   }
 }
