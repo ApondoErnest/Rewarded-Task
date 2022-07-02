@@ -3,38 +3,32 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HmacSHA256, enc } from 'crypto-js';
+import { StorageService } from '../services/storage.service';
 const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     CLIENT_USERNAME = "task@2022";
     CLIENT_KEY = "task@2022"; 
 
+    constructor(private storageService: StorageService) {}
+
     intercept(req: HttpRequest<any>,
               next: HttpHandler): Observable<HttpEvent<any>> {
-                
-        let clonedReq = null;
         
         const headers:HttpHeaders = req.headers;
 
         const pathname = new URL(req.url).pathname;
         const search = new URL(req.url).search;
 
-        const idToken = localStorage.getItem("id_token");
+        const idToken = this.storageService.getData("jwt_token");
 
-        // if (idToken) {
-        //     const cloned = req.clone({
-        //         headers: req.headers.set(TOKEN_HEADER_KEY,
-        //             "Bearer " + idToken)
-        //     });
+        headers.set("Content-Signature", this.CLIENT_USERNAME.concat(":").concat(this.signContent(pathname + search)));
 
-        //     return next.handle(cloned);
-        // }
-        // else {
-        //     return next.handle(req);
-        // }
-        
-        clonedReq = req.clone({
-            headers: req.headers.set("Content-Signature", this.CLIENT_USERNAME.concat(":").concat(this.signContent(pathname + search)))
+        if (idToken)
+            headers.set(TOKEN_HEADER_KEY, "Bearer " + idToken);
+
+        let clonedReq = req.clone({
+            headers: headers.set("Content-Signature", this.CLIENT_USERNAME.concat(":").concat(this.signContent(pathname + search)))
         });
         return next.handle(clonedReq);
     }

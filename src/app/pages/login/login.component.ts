@@ -27,13 +27,12 @@ export class LoginComponent implements OnInit {
     this.errorMessage = '';
     this.form = {...this.form, ...f.form.value};
 
-    this.authService.login(this.form).subscribe(data =>{
-      if (data.errorCode === '0000')
-        this.router.navigate(['/user/dashboard']);
-      this.errorMessage = data.message ? data.message : "Server error";  
-    }, err => {
+    this.authService.login(this.form)
+    .then((data) => this.router.navigate(['/user/dashboard']))
+    .catch(err => {
       this.errorMessage = err?.error?.message;
       this.router.navigate(['/user/dashboard']); //todo remove
     });
+    
   }
 }

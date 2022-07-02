@@ -16,10 +16,12 @@ const routes: Routes = [
   // },
   {
     path: 'checkout',
+    data: {title: 'Rewarded | Bet | Checkout'},
     component: BetCheckoutComponent
   },
   {
     path: ':id',
+    data: {title: 'Rewarded | Bet | Option'},
     component: BetOptionsComponent
   }
 ];

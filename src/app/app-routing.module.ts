@@ -7,14 +7,17 @@ import { RegisterComponent } from './pages/register/register.component';
 const routes: Routes = [
   {
     path: 'home',
+    data: {title: 'Rewarded | Home'},
     component: HomeComponent
   },
   {
     path: 'login',
+    data: {title: 'Rewarded | Login'},
     component: LoginComponent
   },
   {
     path: 'register',
+    data: {title: 'Rewarded | Register'},
     component: RegisterComponent
   },
   {
