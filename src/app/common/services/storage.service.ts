@@ -12,7 +12,7 @@ export class StorageService {
 
   public saveData(key: string, value: string, encrypt =false) {
     if (encrypt) localStorage.setItem(key, this.encrypt(value));
-    else localStorage.setItem(key, this.encrypt(value));
+    else localStorage.setItem(key, value);
   }
 
   public getData(key: string, decrypt=false) {

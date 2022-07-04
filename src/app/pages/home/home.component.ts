@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/common/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  loggedIn!: boolean;
+  constructor(private router: Router,
+    private authService: AuthService) {
+     }
 
   ngOnInit(): void {
+    this.loggedIn = this.authService.isLoggedIn();
   }
-  signin() {
-    this.router.navigate(['/register']); //todo change to move to sign in view
+  goTo(path:string[]) {
+    this.router.navigate(path); //todo change to move to sign in view
   }
 }

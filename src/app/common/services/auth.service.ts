@@ -11,10 +11,12 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
+  private isUserLoggedIn!:boolean;
+  redirectUrl!: string;
+
   constructor(private http: HttpClient,
     private userService: UserService,
     private storageService: StorageService) {
-
   }
 
   login(data: Login ):Promise<string> {
@@ -48,7 +50,9 @@ export class AuthService {
       this.userService.tel = user.tel;
       this.userService.refreshToken = user.refreshToken;
       this.storageService.saveData('id_token', user.accessToken);
-      this.storageService.saveData("expires_at", JSON.stringify(expiresAt.valueOf()) );
+      this.storageService.saveData("expires_at", expiresAt.valueOf() + "" );
+
+      this.isUserLoggedIn = true;
   }          
 
   logout() {
@@ -57,7 +61,8 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-      return moment().isBefore(this.getExpiration());
+      if (this.isUserLoggedIn) return true;
+      return this.storageService.getData("expires_at").toString().length == 0 ? false : moment().isBefore(this.getExpiration());
   }
 
   isLoggedOut() {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from './common/services/message.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Rewarded';
+
+  constructor(private messageService: MessageService) {
+  }
 }

@@ -14,43 +14,43 @@ const routes: Routes = [
         children: [
             {
                 path: 'task',
-                data: {title: 'Rewarded | Task'},
+                title: 'Rewarded | Task',
                 component: TasksComponent
             },
             {
                 path: 'dashboard',
-                data: {title: 'Rewarded | Dashboard'},
+                title: 'Rewarded | Dashboard',
                 component: DashboardComponent
             },
             {
                 path: 'account',
-                data: {title: 'Rewarded | Account'},
+                title: 'Rewarded | Account',
                 component: AccountComponent
             },
             {
                 path: 'support',
-                data: {title: 'Rewarded | Support'},
+                title: 'Rewarded | Support',
                 component: SupportComponent
             },
             {
                 path: 'games',
-                data: {title: 'Rewarded | Games'},
+                title: 'Rewarded | Games',
                 component: GameComponent
             },
             {
                 path: 'bet',
-                data: {title: 'Rewarded | Bet'},
+                title: 'Rewarded | Bet',
                 loadChildren: () => import('./user/bet/bet.module').then(m => m.BetModule)
               },
             {
                 path: '',
-                data: {title: 'Rewarded | Dashboard'},
+                title: 'Rewarded | Dashboard',
                 component: DashboardComponent
             }
         ]
     },
 
-]
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

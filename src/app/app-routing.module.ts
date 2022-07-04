@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './common/guard/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -7,21 +8,22 @@ import { RegisterComponent } from './pages/register/register.component';
 const routes: Routes = [
   {
     path: 'home',
-    data: {title: 'Rewarded | Home'},
+    title: 'Rewarded | Home',
     component: HomeComponent
   },
   {
     path: 'login',
-    data: {title: 'Rewarded | Login'},
+    title: 'Rewarded | Login',
     component: LoginComponent
   },
   {
     path: 'register',
-    data: {title: 'Rewarded | Register'},
+    title: 'Rewarded | Register',
     component: RegisterComponent
   },
   {
     path: 'user',
+    canLoad: [AuthGuard],
     loadChildren: () => import('./pages/user-module.module').then(m => m.UserModuleModule)
   },
   {
