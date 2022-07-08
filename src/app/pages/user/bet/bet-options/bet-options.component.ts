@@ -70,6 +70,7 @@ export class BetOptionsComponent implements OnInit {
   }
 
   private checkoutPage():void {
+    this.campaignService.selectedOptions = this.selecetedOptions;
     this.router.navigate(['/user/bet/checkout'])
   }
 

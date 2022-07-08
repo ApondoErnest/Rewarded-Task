@@ -61,8 +61,9 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-      if (this.isUserLoggedIn) return true;
-      return this.storageService.getData("expires_at").toString().length == 0 ? false : moment().isBefore(this.getExpiration());
+    return true;
+      // if (this.isUserLoggedIn) return true;
+      // return this.storageService.getData("expires_at").toString().length == 0 ? false : moment().isBefore(this.getExpiration());
   }
 
   isLoggedOut() {

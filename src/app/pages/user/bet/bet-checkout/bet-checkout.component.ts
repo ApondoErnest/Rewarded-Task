@@ -11,7 +11,7 @@ import { NavService } from 'src/app/common/services/nav.service';
 })
 export class BetCheckoutComponent implements OnInit {
   routerEventsSubscription: Subscription;
-  constructor(private campaignService: CampaignService,
+  constructor(public campaignService: CampaignService,
     private navService: NavService,
     private router: Router) {
       this.routerEventsSubscription = new Subscription;
