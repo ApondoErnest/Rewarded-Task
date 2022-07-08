@@ -1,8 +1,41 @@
-img {
-    border-radius: 50%;
-    height:100px;
-  }
+.card-img-top {
+  border-radius: 50%;
+}
 
-  .col-3 {
-    width:33.33%
-  }
+img {
+  height: 100px;
+}
+
+.col-3 {
+  width: 33.33%
+}
+
+.payment {
+  height: 100px;
+  width: -webkit-fill-available;
+}
+
+.payment-button {
+  border: unset;
+}
+
+.submit {
+  width: 50%;
+  margin: 20px auto 0 auto
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.row>.col-3 {
+  display: inline-block;
+  float: none;
+}

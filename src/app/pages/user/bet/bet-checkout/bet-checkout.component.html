@@ -1,35 +1,56 @@
 <div class="container">
-    <h1>Bet Checkout</h1>
-
-    <h2>Choices</h2>
-    <div class="row">
-      <div *ngFor="let option of  campaignService.selectedOptions" class="col-3">
-        <div class="card" >
-            <img class="card-img-top" [src]="campaignService.imgbaseUrl + option.img" [alt]="option.name">
-            <div class="card-body">
-              <div class="d-flex justify-space-between">
-                <p class="card-text">{{option.odd}}</p>
-                <i class="fas fa-trash"  style="color: grey;font-size: 20px;"></i>
-              </div>
-
-            </div>
+  <h3 *ngIf="campaignService.selectedOptions.length">Choice{{campaignService.selectedOptions.length> 1 ? 's': ''}}</h3>
+  <div class="row">
+    <div *ngFor="let option of  campaignService.selectedOptions" class="col-3">
+      <div class="card">
+        <img class="card-img-top" [src]="campaignService.imgbaseUrl + option.img" [alt]="option.name">
+        <div class="card-body">
+          <div class="d-flex justify-space-between">
+            <p class="card-text">{{option.odd}}</p>
+            <i class="fas fa-trash" style="color: grey;font-size: 20px;"></i>
           </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <h2>Payment Method</h2>
-    <div class="row">
-        <div *ngFor="let option of  campaignService.selectedOptions" class="col-3">
-          <div class="card" >
-              <img class="card-img-top" [src]="campaignService.imgbaseUrl + option.img" [alt]="option.name">
-              <div class="card-body">
-                <div class="d-flex justify-space-between">
-                  <p class="card-text">{{option.odd}}</p>
-                  <i class="fas fa-trash"  style="color: grey;font-size: 20px;"></i>
-                </div>
-  
-              </div>
-            </div>
-        </div>
+  <h3>Select Payment Method</h3>
+  <div class="row">
+    <div *ngFor="let paymentMethod of  paymentService.fetchAvailablePaymentMethods() | async" class="col-3">
+      <button class="payment-button" (click)="paymentMethodSelected = paymentMethod">
+        <img class="payment"
+          [ngClass]=" {'payment-highlight' :paymentMethodSelected !== undefined && paymentMethodSelected.name === paymentMethod.name} "
+          [src]="campaignService.imgbaseUrl + paymentMethod.img" [alt]="paymentMethod.name">
+      </button>
     </div>
   </div>
+
+  <div *ngIf="paymentMethodSelected !== undefined && paymentMethodSelected.type  === 0">
+    <form>
+      <fieldset>
+        <h3>{{paymentMethodSelected.name}}</h3>
+      </fieldset>
+      <div class="form-group">
+        <label for="phoneNumber">Enter Phone Number</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">+237</div>
+          </div>
+          <input type="tel" class="form-control" id="phoneNumber" placeholder="650923456">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control" id="amount" placeholder="500">
+      </div>
+      <b>Winnings Amount: {{wins}} CFA</b>
+      <button type="submit" class="btn btn-primary mb-2 submit">Make Payments</button>
+    </form>
+  </div>
+  <div *ngIf="paymentMethodSelected !== undefined && paymentMethodSelected.type === 1">
+
+  </div>
+  <div *ngIf="paymentMethodSelected !== undefined && paymentMethodSelected.type === 2">
+
+  </div>
+</div>
