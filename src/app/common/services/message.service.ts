@@ -13,18 +13,34 @@ export class MessageService {
     this.initNotificationLoadingConfig();
     this.initNotificationReportConfig();
 
-   }
+  }
 
 
   public getNotifier() {
-      return Notiflix;
+    return Notiflix;
   }
-  
+
+  public showReportSucces(msg: string) {
+    Notiflix.Report.success(
+      'Success',
+      msg,
+      'Okay',
+    );
+  }
+
+  public showReportFailure(msg: string) {
+    Notiflix.Report.failure(
+      'Failed',
+      msg,
+      'Okay',
+    );
+  }
+
   public showLoader() {
     Notiflix.Loading.standard();
   }
 
-  public showLoaderWithSvg(message:string, svgPath: string) {
+  public showLoaderWithSvg(message: string, svgPath: string) {
     Notiflix.Loading.custom(`${message}...`, {
       customSvgUrl: svgPath,
     });

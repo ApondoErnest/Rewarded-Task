@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { BetRoutingModule } from './bet-routing.module';
 import { BetCategoriesComponent } from './bet-categories/bet-categories.component';
-import {BetOptionsComponent} from './bet-options/bet-options.component';
-import { BetCheckoutComponent } from './bet-checkout/bet-checkout.component'
+import { BetCheckoutComponent } from './bet-checkout/bet-checkout.component';
+import { BetOptionsComponent } from './bet-options/bet-options.component';
+import { BetRoutingModule } from './bet-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BetCheckoutComponent } from './bet-checkout/bet-checkout.component'
   ],
   imports: [
     CommonModule,
-    BetRoutingModule
+    BetRoutingModule,
+    FormsModule
   ]
 })
 export class BetModule { }

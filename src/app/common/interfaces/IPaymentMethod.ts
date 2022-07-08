@@ -1,7 +1,7 @@
 export interface IPaymentMethod {
   img: string,
   name: string,
-  id: string,
+  id: number,
   type: PaymentTypes
 }
 
