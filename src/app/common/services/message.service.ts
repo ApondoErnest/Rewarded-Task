@@ -46,7 +46,7 @@ export class MessageService {
     });
   }
 
-  public showloader(message: string) {
+  public showloaderWithMsg(message: string) {
     Notiflix.Loading.standard(`${message}...`);
   }
 

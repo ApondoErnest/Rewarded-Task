@@ -12,7 +12,8 @@
 
 .navigation ul {
   display: flex;
-  width: 413px;
+  /* width: 413px; */
+  width: 258px;
   padding-left: 2rem
 }
 

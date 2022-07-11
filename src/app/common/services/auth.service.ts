@@ -29,9 +29,9 @@ export class AuthService {
                         resolve("");   
                     }
 
-                    else reject(data.message ? data.message : "Server error");
+                    else reject(data.message ? data : undefined);
                 },
-                error: e => reject("Server Error")
+                error: e => reject(e.error ? e.error : undefined)
             }
           );    
       }); 
@@ -61,9 +61,9 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return true;
-      // if (this.isUserLoggedIn) return true;
-      // return this.storageService.getData("expires_at").toString().length == 0 ? false : moment().isBefore(this.getExpiration());
+    // return true;
+      if (this.isUserLoggedIn) return true;
+      return this.storageService.getData("expires_at").toString().length == 0 ? false : moment().isBefore(this.getExpiration());
   }
 
   isLoggedOut() {

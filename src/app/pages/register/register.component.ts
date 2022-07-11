@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { Register } from 'src/app/common/interfaces/Auth';
 import { AuthService } from 'src/app/common/services/auth.service';
+import { MessageService } from 'src/app/common/services/message.service';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
   referral = 'QS75TZ';
   errorMessage: string = '';
   constructor(private authService: AuthService,
+    private messageService: MessageService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -33,14 +35,22 @@ export class RegisterComponent implements OnInit {
 
     this.errorMessage = '';
     this.form = {...this.form, ...f.form.value};
+    console.log(this.form)
+
+    if (this.form.cpwd !== this.form.pwd)return; 
+
+    this.messageService.showLoader();
 
     this.authService.register(this.form).subscribe(data =>{
-      if (data.errorCode === '0000')
+      this.messageService.removeLoader();
+      debugger
+      if (data.errorCode === '0000'){
         this.router.navigate(['/login']);
+      }
       this.errorMessage = data.message ? data.message : "Server error";  
-    }, err => {
-      this.errorMessage = err?.error?.message;
-      this.router.navigate(['/login']); //todo remove this
+    }, e => {
+      this.errorMessage = e.error && e.error.message ? e.error.message : "Server error";
+      this.messageService.removeLoader();
     });
   }
 
