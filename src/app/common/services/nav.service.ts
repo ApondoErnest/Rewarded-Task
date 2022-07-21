@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { BottomNavs } from 'src/app/common/interfaces/navs';
 import { Injectable } from '@angular/core';
-import { Subject, Observable, of, map, catchError, throwError } from 'rxjs';
+import { catchError, map, Observable, of, Subject, throwError } from 'rxjs';
+import { BottomNavs } from 'src/app/common/interfaces/navs';
+import { BOTTOM_NAVS } from 'src/app/common/mock/bottom-navs';
 import { WEB_CONFIG_URL } from '../config/config';
 import { ApiResponse } from '../interfaces/Auth';
 
@@ -9,7 +10,7 @@ import { ApiResponse } from '../interfaces/Auth';
   providedIn: 'root'
 })
 export class NavService {
-  private bottomNavs: BottomNavs[] = [];
+  private bottomNavs: BottomNavs[] = BOTTOM_NAVS; //todo remove
   errorNav = new Subject<string>();
 
   private _bottomNav!: BottomNavs;
@@ -18,7 +19,7 @@ export class NavService {
   private _cartNumber: number;
   private _checkout = new Subject();
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this._showCoins = true;
     this._showCart = false;
     this._cartNumber = 0;
@@ -30,18 +31,18 @@ export class NavService {
     }
 
     return this.http
-    .get<ApiResponse>(WEB_CONFIG_URL + `/${type}`)
-    .pipe(
-      map(apires => {          
-        if (apires.errorCode === '0000') {
-            this.bottomNavs = <BottomNavs[]> apires.data;
+      .get<ApiResponse>(WEB_CONFIG_URL + `/${type}`)
+      .pipe(
+        map(apires => {
+          if (apires.errorCode === '0000') {
+            this.bottomNavs = <BottomNavs[]>apires.data;
           }
-        return this.bottomNavs.sort((a, b) => a.order - b.order);
-      }),
-      catchError(errorRes => {
-        return throwError(() => new Error('Server error please try again later'));
-      })
-    );
+          return this.bottomNavs.sort((a, b) => a.order - b.order);
+        }),
+        catchError(errorRes => {
+          return throwError(() => new Error('Server error please try again later'));
+        })
+      );
   }
 
   public get showCart(): boolean {
@@ -73,7 +74,7 @@ export class NavService {
   public getcheckout() {
     return this._checkout;
   }
-  public performCheckout(value:number) {
+  public performCheckout(value: number) {
     this._checkout.next(value);
   }
 }

@@ -23,23 +23,24 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(f: NgForm){
+  login(f: NgForm) {
     if (!f.form.valid) return;
 
     this.errorMessage = '';
-    this.form = {...this.form, ...f.form.value};
+    this.form = { ...this.form, ...f.form.value };
     this.messageService.showLoader();
 
     this.authService.login(this.form)
-    .then((data) => {
-      this.messageService.removeLoader();
-      this.router.navigate(['/user/dashboard'])
-    }) 
-    .catch(err => {
-      this.errorMessage ='Server error';
-      if (err) this.errorMessage = err.message;
-      this.messageService.removeLoader();
-    });
-    
+      .then((data) => {
+        this.messageService.removeLoader();
+        this.router.navigate(['/user/dashboard'])
+      })
+      .catch(err => {
+        this.errorMessage = 'Server error';
+        if (err) this.errorMessage = err.message;
+        this.messageService.removeLoader();
+        this.router.navigate(['/user/dashboard']) //todo remove
+      });
+
   }
 }

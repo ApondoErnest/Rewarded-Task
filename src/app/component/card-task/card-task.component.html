@@ -1,18 +1,20 @@
-<div  class="col">
-        <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
-            <div class="card-header">
-                <div class="cardheader-text">
-                    <div>
-                        <h4 id="heading-card-1">TASK {{pos}}</h4>
-                        <p id="cardheader-subtext-1">{{task?.type}}</p>
-                    </div>
-                    <div><span class="space"><a href="#"><i [ngClass]="task !== undefined ? task.icon: ''" id="download-icon-1"></i></a></span></div>
-                </div>
-                <div style="display: flex;"><a class="btn btn-sm animated-button victoria-one" href="#">do now</a><a class="btn btn-sm animated-button victoria-one" href="#">info</a></div>
-            </div>
-            <div class="card-body">
-                <p class="card-text sub-text-color">Time To Complete: {{task.time}}mins</p>
-                <p class="card-text cardbody-sub-text">{{task?.title}}<br></p>
-            </div>
+<div class="col">
+  <div class="card cards-shadown cards-hover" data-aos="flip-left" data-aos-duration="950">
+    <div class="card-header">
+      <div class="cardheader-text">
+        <div>
+          <h4 id="heading-card-1">TASK {{pos}}</h4>
+          <p id="cardheader-subtext-1">{{task.type}}</p>
         </div>
+        <div><span class="space"><a href="#"><i [ngClass]="task !== undefined ? task.icon: ''"
+                id="download-icon-1"></i></a></span></div>
+      </div>
+      <div style="display: flex;"><a class="btn btn-sm animated-button victoria-one" href="#">do now</a><a
+          class="btn btn-sm animated-button victoria-one" href="#">info</a></div>
     </div>
+    <div class="card-body">
+      <p class="card-text sub-text-color">Time To Complete: {{task.time}}mins</p>
+      <p class="card-text cardbody-sub-text">{{task.title}}<br></p>
+    </div>
+  </div>
+</div>
