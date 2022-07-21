@@ -6,8 +6,10 @@ ENV PORT 4200
 
 COPY package.json /watchAdd/package.json
 
+RUN npm install -g @angular/cli
+
 RUN npm install
 
 COPY . /watchAdd/
 
-CMD ["npm", "serve"]
+CMD ["ng", "serve"]
